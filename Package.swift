@@ -13,8 +13,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "sign3intelligence-ios-sdk-swift-package",
-            url: "https://firebasestorage.googleapis.com/v0/b/make-friends-7338f.appspot.com/o/test-intelligence-iOS%2F0.0.1008%2FSign3Intelligence.xcframework.zip?alt=media&token=30e53aac-690d-4d9b-91df-9cef5c28a7e0",
-            checksum: "41796f974cee8c242b4f38da27cf28ca8c9ab52019d6ff2ab7954dc25bb8f986"
+            url: "https://firebasestorage.googleapis.com/v0/b/clean-pdf-sacnner.appspot.com/o/Sign3Intelligenc[…]?alt=media&token=ef9e5c81-6799-4a25-9158-4e6cab87637c",
+            checksum: "ab2733ac1dea70595c39dbc8e4cf742ada61b6928647531559d26cd2145c2bbe"
         )
     ]
 )
