@@ -2,7 +2,7 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
-let version = "0.0.1016"
+let version = "0.0.1017"
 let package = Package(
     name: "sign3intelligence-ios-sdk-swift-package",
     products: [
