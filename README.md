@@ -74,7 +74,7 @@ Options *options = [builder build];
 ```
 
 ## Optional Parameters
-1.	You can add optional parameters like UserId, Phone Number, etc., at any time and update the instance of Sign3Intelligence.
+1.    You can add optional parameters like UserId, Phone Number, etc., at any time and update the instance of Sign3Intelligence.
 3. Once the options are updated, they get reset. Clients need to explicitly update the options again to ingest them, or else the default value of OTHERS in userEventType will be sent to the backend.
 4. You need to call **getIntelligence()** function whenever you update the options.
 5. To update the Sign3Intelligence instance with optional parameters, including additional attributes, you can use the following examples.
@@ -114,20 +114,6 @@ NSDictionary *additionalAttributes = @{
 builder = [builder setAdditionalAttributes:additionalAttributes];
 UpdateOption *updateOption = [builder build];
 [[Sign3SDK getInstance] updateOptionsWithUpdateOption:updateOption];
-```
-
-## Get Session ID
-
-1. The Session ID is the unique identifier of a user's app session and serves as a reference point when retrieving the device result for that session.
-2. The Session ID follows the OS lifecycle management, in line with industry best practices. This means that a user's session remains active as long as the device maintains it, unless the user terminates the app or the device runs out of memory and has to kill the app.
-
- ### For Swift
- ```swift
-Sign3SDK.getInstance().getSessionId()
-```
- ### For Objective-C
-```objectove-c
-[[Sign3SDK getInstance] getSessionId]
 ```
 
 ## Fetch Device Intelligence Result
@@ -187,25 +173,48 @@ Sign3 *listener = [[Sign3 alloc] init];
 
 ```response
 {
-    "deviceId": "19D298EB-51E6-447A-9126-75D141CF5BE9",
-    "requestId": "53D0BD3F-9D30-472E-91E1-27F8D6962404"
-    "mirroredScreen": false,
-    "vpn": false,
-    "geoSpoofed": true,
+    "sessionId": "f91b7d20-5e33-4f87-b1e0-145c6b0c8d42",
+    "deviceId": "cf679f71-6358-4bf8-9b37-65e22e912053",
+    "requestId": "315189c4-2767-48ed-83ec-fafc77defaad",
+    "simulator": false,
     "jailbroken": false,
-    "simulator": true,
-    "hooking": true,
-    "gpsLocation": {
-        "longitude": 72.8561644,
-        "altitude": 0,
-        "latitude": 19.0176147
-    },
+    "vpn": false,
+    "geoSpoofed": false,
     "appTampering": true,
-    "cloned": true,
+    "hooking": true,
     "proxy": false,
+    "mirroredScreen": false,
+    "gpsLocation": {
+        "latitude": 28.5128729642046,
+        "longitude": 77.08840542816685,
+        "altitude": 237.2448616027832
+    },
+    "cloned": true,
+    "additionalData": {},
+    "clientUserIds": [
+        "difansd23r32",
+        "2390ksdfaksd"
+    ],
+    "sign3UserIds": [
+        "13asefnn324"
+    ],
+    "newDevice": false,
+    "ip": "106.219.161.71",
+    "ipDetails": {
+        "country": "IN",
+        "fraudScore": 27.0,
+        "city": "New Delhi",
+        "isp": null,
+        "latitude": 28.60000038,
+        "region": "National Capital Territory of Delhi",
+        "asn": "",
+        "longitude": 77.19999695
+    },
+    "factoryReset": false,
+    "factoryResetTime": 1745067328
+    "deviceRiskScore": 99.50516,
+    "sessionRiskScore": 99.50516,
 }
-}
-
 ```
 ### Error Response
 
@@ -222,21 +231,28 @@ Sign3 *listener = [[Sign3 alloc] init];
 
 The intelligence response includes the following keys:
 
+- **sessionId**: A Session ID uniquely tracks an app session until it's closed or killed.
 - **requestId**: A unique identifier for the specific request.
+- **newDevice**: Indicates if the device is new.
 - **deviceId**: A unique identifier for the device.
 - **vpn**: Indicates whether a VPN is active on the device.
 - **proxy**: Indicates whether a proxy server is in use.
-- **simulator**: Indicates if the app is running on an simulator.
+- **simulator**: Indicates if the app is running on an emulator.
 - **mirroredScreen**: Indicates if the device's screen is being mirrored.
 - **cloned**: Indicates if the user is using a cloned instance of the app.
 - **geoSpoofed**: Indicates if the device's location is being faked.
-- **jailbroken**: Indicates if the device has been jailbroken, which could compromise its security and integrity.
+- **jailbroken**: Indicates if the device has been modified for root access.
+- **sessionRiskScore**: A score representing the risk level of the session.
 - **hooking**: Indicates if the app has been altered by malicious code.
+- **factoryReset**: Indicates if a suspicious factory reset has been performed.
 - **appTampering**: Indicates if the app has been modified in an unauthorized way.
+- **clientUserIds**: An array of user IDs assigned by the client that a device has seen till now.
 - **gpsLocation**: Details of the device's current GPS location, including latitude, longitude, and address information.
+- **ip**: The current IP address of the device.
+- **ipDetails**: Object added to capture ip related information and fraudScore related to ip address.
+- **sign3UserIds**: This will contain Sign3 generated userIds list till now the device has seen. Note: The logic for generating userId will be configured as per your business logic and can be customized.
+- **deviceRiskScore**: The risk score of the device. Note: sessionRiskScore is derived from the latest state of the device but deviceRiskScore also factors in the historical state of the device (whether a device was rooted in any of the past sessions).
+- **additionalData**: Reserved for any extra or custom data not present in the IntelligenceResponse, providing a customized response based on specific requirements.
 
 <br>
 
-## Changelog
-### 1.0.0
- - First stable release
