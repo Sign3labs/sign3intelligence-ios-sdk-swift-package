@@ -13,8 +13,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Sign3Intelligence",
-            url: "https://cdn.sign3.in/mobile-sdk/ios/intelligence/v\(version)/Sign3Intelligence.xcframework.zip",
-            checksum: "53c16534c525769d47f363a7ce35937eae89f4a73e74774c56d419842521f1b5"
+            url: "https://cdn.sign3.in/mobile-sdk/ios/test/v0.0.1029/Sign3Intelligence.xcframework.zip",
+            checksum: "1902d13244f0de98e8604494c7203247a6093cd811f45cf8819ae9fad0e7d5b0"
         )
     ]
 )
