@@ -2,7 +2,7 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
-let version = "1.0.5"
+let version = "1.0.6"
 let package = Package(
     name: "Sign3Intelligence",
     products: [
@@ -13,8 +13,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Sign3Intelligence",
-            url: "https://cdn.sign3.in/mobile-sdk/ios/test/v0.0.1029/Sign3Intelligence.xcframework.zip",
-            checksum: "1902d13244f0de98e8604494c7203247a6093cd811f45cf8819ae9fad0e7d5b0"
+            url: "https://cdn.sign3.in/mobile-sdk/ios/intelligence/v\(version)/Sign3Intelligence.xcframework.zip",
+            checksum: "a4ac58a229f60f2b2788ea0ff599a4e80df543949525c0569b0bfeb2530f3d84"
         )
     ]
 )
