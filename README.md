@@ -1,6 +1,6 @@
 # Sign3 SDK Integration Guide for iOS
 
-The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as rooted devices, VPN connections, or remote access and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system.
+The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as jailbroken devices, app tampering, VPN connections, or screen mirroring and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system. 
 <br>
 
 ## Requirements
