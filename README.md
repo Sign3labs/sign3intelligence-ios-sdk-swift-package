@@ -262,6 +262,7 @@ The intelligence response includes the following keys:
 - **sign3UserIds**: This will contain Sign3 generated userIds list till now the device has seen. Note: The logic for generating userId will be configured as per your business logic and can be customized.
 - **deviceRiskScore**: The risk score of the device. Note: sessionRiskScore is derived from the latest state of the device but deviceRiskScore also factors in the historical state of the device (whether a device was rooted in any of the past sessions).
 - **additionalData**: Reserved for any extra or custom data not present in the IntelligenceResponse, providing a customized response based on specific requirements.
-
+- **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
+- **appAnalytics**: An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device.
 <br>
 
