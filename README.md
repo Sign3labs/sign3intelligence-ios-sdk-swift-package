@@ -1,6 +1,7 @@
 # Sign3 SDK Integration Guide for iOS
 
-The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as rooted devices, VPN connections, or remote access and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system.
+The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as jailbroken devices, app tampering, VPN connections, or screen mirroring and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system. 
+
 <br>
 
 ## Requirements
@@ -37,10 +38,13 @@ The SDK can be imported like any other library:
 ``` swift
 import Sign3Intelligence
 ```
+
 ### For Objective-C
 ``` objective-c
 #import "Sign3Intelligence/Sign3Intelligence-Swift.h"
 ```
+
+<br>
 
 ## Initializing the SDK
 
@@ -59,6 +63,7 @@ Sign3SDK.getInstance().initAsync(options: options){isInitialize in
     // To check if the SDK is initialized correctly or not
 }
 ```
+
 ### For Objective-C
 ``` objective-c
 OptionBuilder *builder = [[OptionBuilder alloc] init];
@@ -72,6 +77,8 @@ Options *options = [builder build];
     NSLog(@"TAG_Initialization status: %@", isInitialize ? @"YES" : @"NO");
 }];
 ```
+
+<br>
 
 ## Optional Parameters
 1.    You can add optional parameters like UserId, Phone Number, etc., at any time and update the instance of Sign3Intelligence.
@@ -96,6 +103,7 @@ Sign3SDK.getInstance().updateOptions(updateOption:  UpdateOption.Builder()
         ]
 ).build())
 ```
+
 ### For Objective-C
 ``` objective-c
 UpdateOptionBuilder *builder = [[UpdateOptionBuilder alloc] init];
@@ -115,6 +123,27 @@ builder = [builder setAdditionalAttributes:additionalAttributes];
 UpdateOption *updateOption = [builder build];
 [[Sign3SDK getInstance] updateOptionsWithUpdateOption:updateOption];
 ```
+
+<br>
+
+## Get Session ID
+
+1. The Session ID is the unique identifier of a user's app session and serves as a reference point when retrieving the device result for that session.
+2. The Session ID follows the OS lifecycle management, in line with industry best practices. This means that a user's session remains active as long as the device maintains it, unless the user terminates the app or the device runs out of memory and has to kill the app.
+
+### For Swift
+
+ ```swift
+let sessionId = Sign3SDK.getInstance().getSessionId()
+```
+
+### For Objective-C
+
+ ```objective-c
+NSString *sessionId = [[Sign3SDK getInstance] getSessionId];
+```
+
+<br>
 
 ## Fetch Device Intelligence Result
 
@@ -143,6 +172,7 @@ class Sign3: IntelligenceResponseListener{
     }
 }
 ```
+
  ### For Objective-C
 ``` objective-c
 Sign3 *listener = [[Sign3 alloc] init];
@@ -225,6 +255,7 @@ Sign3 *listener = [[Sign3 alloc] init];
     "mirroredScreen": false
 }
 ```
+
 ### Error Response
 
 ```error
@@ -265,4 +296,5 @@ The intelligence response includes the following keys:
 - **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
 - **appAnalytics**: An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device.
 <br>
+
 
