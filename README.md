@@ -173,47 +173,56 @@ Sign3 *listener = [[Sign3 alloc] init];
 
 ```response
 {
-    "sessionId": "f91b7d20-5e33-4f87-b1e0-145c6b0c8d42",
-    "deviceId": "cf679f71-6358-4bf8-9b37-65e22e912053",
-    "requestId": "315189c4-2767-48ed-83ec-fafc77defaad",
-    "simulator": false,
-    "jailbroken": false,
+    "deviceRiskScore": 49.83302,
+    "geoSpoofed": true,
     "vpn": false,
-    "geoSpoofed": false,
-    "appTampering": true,
     "hooking": true,
+    "appAnalytics": {
+        "affinity": {
+            "entertainment": 0.5
+        }
+    },
+    "simulator": true,
     "proxy": false,
-    "mirroredScreen": false,
-    "gpsLocation": {
-        "latitude": 28.5128729642046,
-        "longitude": 77.08840542816685,
-        "altitude": 237.2448616027832
-    },
-    "cloned": true,
-    "additionalData": {},
-    "clientUserIds": [
-        "difansd23r32",
-        "2390ksdfaksd"
-    ],
-    "sign3UserIds": [
-        "13asefnn324"
-    ],
-    "newDevice": false,
-    "ip": "106.219.161.71",
-    "ipDetails": {
-        "country": "IN",
-        "fraudScore": 27.0,
-        "city": "New Delhi",
-        "isp": null,
-        "latitude": 28.60000038,
-        "region": "National Capital Territory of Delhi",
-        "asn": "",
-        "longitude": 77.19999695
-    },
+    "newDevice": true,
     "factoryReset": false,
-    "factoryResetTime": 1745067328
-    "deviceRiskScore": 99.50516,
-    "sessionRiskScore": 99.50516,
+    "sessionRiskScore": 63.636364,
+    "clientUserIds": [],
+    "ip": "106.194.108.233",
+    "jailbroken": false,
+    "requestId": "1b1459a5-bc57-45c7-8a24-4a8fbde6777d",
+    "gpsLocation": {
+        "altitude": 0,
+        "longitude": 72.8561644,
+        "latitude": 19.0176147
+    },
+    "deviceId": "872dcb31-7a38-426d-8a66-88bb70024a80",
+    "ipDetails": {
+        "isp": "Patna (Police Colony)",
+        "asn": "45609",
+        "fraudScore": 0,
+        "city": "Patna (Police Colony)",
+        "region": "Patna (Police Colony)",
+        "longitude": 85.0818,
+        "country": "Patna (Police Colony)",
+        "latitude": 25.5819
+    },
+    "sessionId": "02430cb5-84b9-4750-b48e-08a2dcf0814d",
+    "cloned": true,
+    "sign3UserIds": [],
+    "deviceMeta": {
+        "cpuType": "ARM64 CPU",
+        "iOSVersion": "18.2",
+        "totalRAM": "9.42 GB",
+        "brand": "Apple",
+        "model": "iPhone",
+        "storageAvailable": "62949584896",
+        "screenResolution": "1320x2868",
+        "storageTotal": "494384795648"
+    },
+    "factoryResetTime": 1746337162,
+    "appTampering": true,
+    "mirroredScreen": false
 }
 ```
 ### Error Response
@@ -253,6 +262,7 @@ The intelligence response includes the following keys:
 - **sign3UserIds**: This will contain Sign3 generated userIds list till now the device has seen. Note: The logic for generating userId will be configured as per your business logic and can be customized.
 - **deviceRiskScore**: The risk score of the device. Note: sessionRiskScore is derived from the latest state of the device but deviceRiskScore also factors in the historical state of the device (whether a device was rooted in any of the past sessions).
 - **additionalData**: Reserved for any extra or custom data not present in the IntelligenceResponse, providing a customized response based on specific requirements.
-
+- **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
+- **appAnalytics**: An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device.
 <br>
 
