@@ -4,7 +4,7 @@ The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device
 <br>
 
 ## Requirements
-- iOS 13.0 or higher
+- iOS 15.0 or higher
 - [Access WiFi Information entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info) 
 - [Location permission](https://developer.apple.com/documentation/corelocation/)
 - [iCloud](https://developer.apple.com/documentation/CloudKit)
