@@ -5,6 +5,9 @@ import PackageDescription
 let version = "1.0.9"
 let package = Package(
     name: "Sign3Intelligence",
+    platforms: [
+        .iOS(.v15)
+    ],
     products: [
         .library(
             name: "Sign3Intelligence",
