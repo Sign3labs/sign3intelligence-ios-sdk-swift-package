@@ -5,7 +5,7 @@ The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device
 <br>
 
 ## Requirements
-- iOS 13.0 or higher
+- iOS 15.0 or higher
 - [Access WiFi Information entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info) 
 - [Location permission](https://developer.apple.com/documentation/corelocation/)
 - [iCloud](https://developer.apple.com/documentation/CloudKit)
@@ -154,8 +154,7 @@ NSString *sessionId = [[Sign3SDK getInstance] getSessionId];
  ### For Swift
 ``` swift
 
-let listener = Sign3()
-Sign3SDK.getInstance().getIntelligence(listener: listener)
+Sign3SDK.getInstance().getIntelligence(listener: Sign3())
 
 class Sign3: IntelligenceResponseListener{
     
@@ -242,6 +241,7 @@ Sign3 *listener = [[Sign3 alloc] init];
     "sign3UserIds": [],
     "deviceMeta": {
         "cpuType": "ARM64 CPU",
+        "product": "iPhone 7"
         "iOSVersion": "18.2",
         "totalRAM": "9.42 GB",
         "brand": "Apple",
