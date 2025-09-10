@@ -5,9 +5,6 @@ import PackageDescription
 let version = "1.0.9"
 let package = Package(
     name: "Sign3Intelligence",
-    platforms: [
-        .iOS(.v15)
-    ],
     products: [
         .library(
             name: "Sign3Intelligence",
@@ -17,7 +14,7 @@ let package = Package(
         .binaryTarget(
             name: "Sign3Intelligence",
             url: "https://cdn.sign3.in/mobile-sdk/ios/intelligence/v\(version)/Sign3Intelligence.xcframework.zip",
-            checksum: "c514d3b94315556b2d9b60511f1a49821fc5c3313658fa3d1deec99c7fc7a6ab"
+            checksum: "4dadd4e07629dc1337cfc297cc21fc639377143b4200726527fcfb9e4dc16176"
         )
     ]
 )

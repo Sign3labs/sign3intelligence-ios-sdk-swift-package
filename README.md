@@ -53,29 +53,35 @@ import Sign3Intelligence
 
 ### For Swift
 ``` swift
-let options = Options.Builder()
-    .setClientId("<SIGN3_CLIENT_ID>")
-    .setClientSecret("<SIGN3_CLIENT_SECRET>")
-    .setEnvironment(Environment.PROD) // For Prod: Environment.PROD, For Dev: Environment.DEV
-    .build()
+if #available(iOS 15.0, *) {
+    let options = Options.Builder()
+        .setClientId("<SIGN3_CLIENT_ID>")
+        .setClientSecret("<SIGN3_CLIENT_SECRET>")
+        .setEnvironment(Environment.PROD) // For Prod: Environment.PROD, For Dev: Environment.DEV
+        .build()
 
-Sign3SDK.getInstance().initAsync(options: options){isInitialize in
-    // To check if the SDK is initialized correctly or not
+    Sign3SDK.getInstance().initAsync(options: options){isInitialize in
+        // To check if the SDK is initialized correctly or not
+    }
 }
 ```
 
 ### For Objective-C
 ``` objective-c
-OptionBuilder *builder = [[OptionBuilder alloc] init];
-builder = [builder setClientId:@"<SIGN3_CLIENT_ID>"];
-builder = [builder setClientSecret:@"<SIGN3_CLIENT_SECRET>"];
-builder = [builder setEnvironment:EnvironmentPROD];
-Options *options = [builder build];
+if #available(iOS 15.0, *) {
+    OptionBuilder *builder = [[OptionBuilder alloc] init];
+    builder = [builder setClientId:@"<SIGN3_CLIENT_ID>"];
+    builder = [builder setClientSecret:@"<SIGN3_CLIENT_SECRET>"];
+    builder = [builder setEnvironment:EnvironmentPROD];
+    Options *options = [builder build];
 
-[[Sign3SDK getInstance] initAsyncWithOptions:options completion:^(BOOL isInitialize) {
-    // Handle initialization result
-    NSLog(@"TAG_Initialization status: %@", isInitialize ? @"YES" : @"NO");
-}];
+    [[Sign3SDK getInstance] initAsyncWithOptions:options completion:^(
+        BOOL isInitialize
+    ) {
+        // Handle initialization result
+        NSLog(@"TAG_Initialization status: %@", isInitialize ? @"YES" : @"NO");
+    }];
+}
 ```
 
 <br>
@@ -88,40 +94,44 @@ Options *options = [builder build];
 
 ### For Swift
 ``` swift
-Sign3SDK.getInstance().updateOptions(updateOption:  UpdateOption.Builder()
-    .setPhoneNumber("1234567890")
-    .setUserId("12345")
-    .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
-    .setOtpInputType(OtpInputType.AUTO_FILLED)
-    .setUserEventType(UserEventType.TRANSACTION)
-    .setMerchantId("1234567890")
-    .setAdditionalAttributes(
-        ["SIGN_UP_TIMESTAMP": String(Date().timeIntervalSince1970 * 1000),
-         "SIGNUP_METHOD": "PASSWORD",
-         "REFERRED_BY": "UserID",
-         "PREFERRED_LANGUAGE": "English"
-        ]
-).build())
+if #available(iOS 15.0, *) {
+    Sign3SDK.getInstance().updateOptions(updateOption:  UpdateOption.Builder()
+        .setPhoneNumber("1234567890")
+        .setUserId("12345")
+        .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
+        .setOtpInputType(OtpInputType.AUTO_FILLED)
+        .setUserEventType(UserEventType.TRANSACTION)
+        .setMerchantId("1234567890")
+        .setAdditionalAttributes(
+            ["SIGN_UP_TIMESTAMP": String(Date().timeIntervalSince1970 * 1000),
+             "SIGNUP_METHOD": "PASSWORD",
+             "REFERRED_BY": "UserID",
+             "PREFERRED_LANGUAGE": "English"
+            ]
+    ).build())
+}
 ```
 
 ### For Objective-C
 ``` objective-c
-UpdateOptionBuilder *builder = [[UpdateOptionBuilder alloc] init];
-builder = [builder setPhoneNumber:@"1234567890"];
-builder = [builder setUserId:@"vy53jbdg8"];
-builder = [builder setPhoneInputType:PhoneInputTypeMANUAL];
-builder = [builder setOtpInputType:OtpInputTypeCOPY_PASTED];
-builder = [builder setUserEventType:UserEventTypeLOGIN];
-builder = [builder setMerchantId:@"1234567890"];
-NSDictionary *additionalAttributes = @{
-    @"SIGN_UP_TIMESTAMP": [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970] * 1000],
-    @"SIGNUP_METHOD": @"PASSWORD",
-    @"REFERRED_BY": @"UserID",
-    @"PREFERRED_LANGUAGE": @"English"
-};
-builder = [builder setAdditionalAttributes:additionalAttributes];
-UpdateOption *updateOption = [builder build];
-[[Sign3SDK getInstance] updateOptionsWithUpdateOption:updateOption];
+if #available(iOS 15.0, *) {
+    UpdateOptionBuilder *builder = [[UpdateOptionBuilder alloc] init];
+    builder = [builder setPhoneNumber:@"1234567890"];
+    builder = [builder setUserId:@"vy53jbdg8"];
+    builder = [builder setPhoneInputType:PhoneInputTypeMANUAL];
+    builder = [builder setOtpInputType:OtpInputTypeCOPY_PASTED];
+    builder = [builder setUserEventType:UserEventTypeLOGIN];
+    builder = [builder setMerchantId:@"1234567890"];
+    NSDictionary *additionalAttributes = @{
+        @"SIGN_UP_TIMESTAMP": [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970] * 1000],
+        @"SIGNUP_METHOD": @"PASSWORD",
+        @"REFERRED_BY": @"UserID",
+        @"PREFERRED_LANGUAGE": @"English"
+    };
+    builder = [builder setAdditionalAttributes:additionalAttributes];
+    UpdateOption *updateOption = [builder build];
+    [[Sign3SDK getInstance] updateOptionsWithUpdateOption:updateOption];
+}
 ```
 
 <br>
@@ -134,13 +144,17 @@ UpdateOption *updateOption = [builder build];
 ### For Swift
 
  ```swift
-let sessionId = Sign3SDK.getInstance().getSessionId()
+if #available(iOS 15.0, *) {
+    let sessionId = Sign3SDK.getInstance().getSessionId()
+}
 ```
 
 ### For Objective-C
 
  ```objective-c
-NSString *sessionId = [[Sign3SDK getInstance] getSessionId];
+if #available(iOS 15.0, *) {
+    NSString *sessionId = [[Sign3SDK getInstance] getSessionId];
+}
 ```
 
 <br>
@@ -153,45 +167,48 @@ NSString *sessionId = [[Sign3SDK getInstance] getSessionId];
 
  ### For Swift
 ``` swift
-
-Sign3SDK.getInstance().getIntelligence(listener: Sign3())
-
-class Sign3: IntelligenceResponseListener{
+if #available(iOS 15.0, *) {
+    Sign3SDK.getInstance().getIntelligence(listener: Sign3())
     
-    func onSuccess(response: IntelligenceResponse) {
-        if let jsonString = response.toJson() {
-            DispatchQueue.main.async {
-                // Do something with the response
+    class Sign3: IntelligenceResponseListener{
+        
+        func onSuccess(response: IntelligenceResponse) {
+            if let jsonString = response.toJson() {
+                DispatchQueue.main.async {
+                    // Do something with the response
+                }
             }
         }
-    }
-    
-    func onError(error: IntelligenceError) {
-        // Something went wrong, handle the error message
+        
+        func onError(error: IntelligenceError) {
+            // Something went wrong, handle the error message
+        }
     }
 }
 ```
 
  ### For Objective-C
 ``` objective-c
-Sign3 *listener = [[Sign3 alloc] init];
-[[Sign3SDK getInstance] getIntelligenceWithListener:self.listener];
-
-@interface Sign3 : NSObject <IntelligenceResponseListener>
-@end
-
-@implementation Sign3
-
-- (void)onErrorWithError:(IntelligenceError * _Nonnull)error {
-    // Something went wrong, handle the error message
+if #available(iOS 15.0, *) {
+    Sign3 *listener = [[Sign3 alloc] init];
+    [[Sign3SDK getInstance] getIntelligenceWithListener:self.listener];
+    
+    @interface Sign3 : NSObject <IntelligenceResponseListener>
+    @end
+    
+    @implementation Sign3
+    
+    - (void)onErrorWithError:(IntelligenceError * _Nonnull)error {
+        // Something went wrong, handle the error message
+    }
+    
+    - (void)onSuccessWithResponse:(IntelligenceResponse * _Nonnull)response {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Do something with the response
+        });
+    }
+    @end
 }
-
-- (void)onSuccessWithResponse:(IntelligenceResponse * _Nonnull)response {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // Do something with the response
-    });
-}
-@end
 ```
 
 <br>
@@ -296,5 +313,6 @@ The intelligence response includes the following keys:
 - **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
 - **appAnalytics**: An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device.
 <br>
+
 
 
