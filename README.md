@@ -1,6 +1,7 @@
 # Sign3 SDK Integration Guide for iOS
 
-The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as rooted devices, VPN connections, or remote access and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system.
+The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as jailbroken devices, app tampering, VPN connections, or screen mirroring and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system. 
+
 <br>
 
 ## Requirements
@@ -37,10 +38,13 @@ The SDK can be imported like any other library:
 ``` swift
 import Sign3Intelligence
 ```
+
 ### For Objective-C
 ``` objective-c
 #import "Sign3Intelligence/Sign3Intelligence-Swift.h"
 ```
+
+<br>
 
 ## Initializing the SDK
 
@@ -49,29 +53,38 @@ import Sign3Intelligence
 
 ### For Swift
 ``` swift
-let options = Options.Builder()
-    .setClientId("<SIGN3_CLIENT_ID>")
-    .setClientSecret("<SIGN3_CLIENT_SECRET>")
-    .setEnvironment(Environment.PROD) // For Prod: Environment.PROD, For Dev: Environment.DEV
-    .build()
+if #available(iOS 15.0, *) {
+    let options = Options.Builder()
+        .setClientId("<SIGN3_CLIENT_ID>")
+        .setClientSecret("<SIGN3_CLIENT_SECRET>")
+        .setEnvironment(Environment.PROD) // For Prod: Environment.PROD, For Dev: Environment.DEV
+        .build()
 
-Sign3SDK.getInstance().initAsync(options: options){isInitialize in
-    // To check if the SDK is initialized correctly or not
+    Sign3SDK.getInstance().initAsync(options: options){isInitialize in
+        // To check if the SDK is initialized correctly or not
+    }
 }
 ```
+
 ### For Objective-C
 ``` objective-c
-OptionBuilder *builder = [[OptionBuilder alloc] init];
-builder = [builder setClientId:@"<SIGN3_CLIENT_ID>"];
-builder = [builder setClientSecret:@"<SIGN3_CLIENT_SECRET>"];
-builder = [builder setEnvironment:EnvironmentPROD];
-Options *options = [builder build];
+if #available(iOS 15.0, *) {
+    OptionBuilder *builder = [[OptionBuilder alloc] init];
+    builder = [builder setClientId:@"<SIGN3_CLIENT_ID>"];
+    builder = [builder setClientSecret:@"<SIGN3_CLIENT_SECRET>"];
+    builder = [builder setEnvironment:EnvironmentPROD];
+    Options *options = [builder build];
 
-[[Sign3SDK getInstance] initAsyncWithOptions:options completion:^(BOOL isInitialize) {
-    // Handle initialization result
-    NSLog(@"TAG_Initialization status: %@", isInitialize ? @"YES" : @"NO");
-}];
+    [[Sign3SDK getInstance] initAsyncWithOptions:options completion:^(
+        BOOL isInitialize
+    ) {
+        // Handle initialization result
+        NSLog(@"TAG_Initialization status: %@", isInitialize ? @"YES" : @"NO");
+    }];
+}
 ```
+
+<br>
 
 ## Optional Parameters
 1.    You can add optional parameters like UserId, Phone Number, etc., at any time and update the instance of Sign3Intelligence.
@@ -81,40 +94,70 @@ Options *options = [builder build];
 
 ### For Swift
 ``` swift
-Sign3SDK.getInstance().updateOptions(updateOption:  UpdateOption.Builder()
-    .setPhoneNumber("1234567890")
-    .setUserId("12345")
-    .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
-    .setOtpInputType(OtpInputType.AUTO_FILLED)
-    .setUserEventType(UserEventType.TRANSACTION)
-    .setMerchantId("1234567890")
-    .setAdditionalAttributes(
-        ["SIGN_UP_TIMESTAMP": String(Date().timeIntervalSince1970 * 1000),
-         "SIGNUP_METHOD": "PASSWORD",
-         "REFERRED_BY": "UserID",
-         "PREFERRED_LANGUAGE": "English"
-        ]
-).build())
+if #available(iOS 15.0, *) {
+    Sign3SDK.getInstance().updateOptions(updateOption:  UpdateOption.Builder()
+        .setPhoneNumber("1234567890")
+        .setUserId("12345")
+        .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
+        .setOtpInputType(OtpInputType.AUTO_FILLED)
+        .setUserEventType(UserEventType.TRANSACTION)
+        .setMerchantId("1234567890")
+        .setAdditionalAttributes(
+            ["SIGN_UP_TIMESTAMP": String(Date().timeIntervalSince1970 * 1000),
+             "SIGNUP_METHOD": "PASSWORD",
+             "REFERRED_BY": "UserID",
+             "PREFERRED_LANGUAGE": "English"
+            ]
+    ).build())
+}
 ```
+
 ### For Objective-C
 ``` objective-c
-UpdateOptionBuilder *builder = [[UpdateOptionBuilder alloc] init];
-builder = [builder setPhoneNumber:@"1234567890"];
-builder = [builder setUserId:@"vy53jbdg8"];
-builder = [builder setPhoneInputType:PhoneInputTypeMANUAL];
-builder = [builder setOtpInputType:OtpInputTypeCOPY_PASTED];
-builder = [builder setUserEventType:UserEventTypeLOGIN];
-builder = [builder setMerchantId:@"1234567890"];
-NSDictionary *additionalAttributes = @{
-    @"SIGN_UP_TIMESTAMP": [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970] * 1000],
-    @"SIGNUP_METHOD": @"PASSWORD",
-    @"REFERRED_BY": @"UserID",
-    @"PREFERRED_LANGUAGE": @"English"
-};
-builder = [builder setAdditionalAttributes:additionalAttributes];
-UpdateOption *updateOption = [builder build];
-[[Sign3SDK getInstance] updateOptionsWithUpdateOption:updateOption];
+if #available(iOS 15.0, *) {
+    UpdateOptionBuilder *builder = [[UpdateOptionBuilder alloc] init];
+    builder = [builder setPhoneNumber:@"1234567890"];
+    builder = [builder setUserId:@"vy53jbdg8"];
+    builder = [builder setPhoneInputType:PhoneInputTypeMANUAL];
+    builder = [builder setOtpInputType:OtpInputTypeCOPY_PASTED];
+    builder = [builder setUserEventType:UserEventTypeLOGIN];
+    builder = [builder setMerchantId:@"1234567890"];
+    NSDictionary *additionalAttributes = @{
+        @"SIGN_UP_TIMESTAMP": [NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970] * 1000],
+        @"SIGNUP_METHOD": @"PASSWORD",
+        @"REFERRED_BY": @"UserID",
+        @"PREFERRED_LANGUAGE": @"English"
+    };
+    builder = [builder setAdditionalAttributes:additionalAttributes];
+    UpdateOption *updateOption = [builder build];
+    [[Sign3SDK getInstance] updateOptionsWithUpdateOption:updateOption];
+}
 ```
+
+<br>
+
+## Get Session ID
+
+1. The Session ID is the unique identifier of a user's app session and serves as a reference point when retrieving the device result for that session.
+2. The Session ID follows the OS lifecycle management, in line with industry best practices. This means that a user's session remains active as long as the device maintains it, unless the user terminates the app or the device runs out of memory and has to kill the app.
+
+### For Swift
+
+ ```swift
+if #available(iOS 15.0, *) {
+    let sessionId = Sign3SDK.getInstance().getSessionId()
+}
+```
+
+### For Objective-C
+
+ ```objective-c
+if #available(iOS 15.0, *) {
+    NSString *sessionId = [[Sign3SDK getInstance] getSessionId];
+}
+```
+
+<br>
 
 ## Fetch Device Intelligence Result
 
@@ -124,45 +167,48 @@ UpdateOption *updateOption = [builder build];
 
  ### For Swift
 ``` swift
-
-let listener = Sign3()
-Sign3SDK.getInstance().getIntelligence(listener: listener)
-
-class Sign3: IntelligenceResponseListener{
+if #available(iOS 15.0, *) {
+    Sign3SDK.getInstance().getIntelligence(listener: Sign3())
     
-    func onSuccess(response: IntelligenceResponse) {
-        if let jsonString = response.toJson() {
-            DispatchQueue.main.async {
-                // Do something with the response
+    class Sign3: IntelligenceResponseListener{
+        
+        func onSuccess(response: IntelligenceResponse) {
+            if let jsonString = response.toJson() {
+                DispatchQueue.main.async {
+                    // Do something with the response
+                }
             }
         }
-    }
-    
-    func onError(error: IntelligenceError) {
-        // Something went wrong, handle the error message
+        
+        func onError(error: IntelligenceError) {
+            // Something went wrong, handle the error message
+        }
     }
 }
 ```
+
  ### For Objective-C
 ``` objective-c
-Sign3 *listener = [[Sign3 alloc] init];
-[[Sign3SDK getInstance] getIntelligenceWithListener:self.listener];
-
-@interface Sign3 : NSObject <IntelligenceResponseListener>
-@end
-
-@implementation Sign3
-
-- (void)onErrorWithError:(IntelligenceError * _Nonnull)error {
-    // Something went wrong, handle the error message
+if #available(iOS 15.0, *) {
+    Sign3 *listener = [[Sign3 alloc] init];
+    [[Sign3SDK getInstance] getIntelligenceWithListener:self.listener];
+    
+    @interface Sign3 : NSObject <IntelligenceResponseListener>
+    @end
+    
+    @implementation Sign3
+    
+    - (void)onErrorWithError:(IntelligenceError * _Nonnull)error {
+        // Something went wrong, handle the error message
+    }
+    
+    - (void)onSuccessWithResponse:(IntelligenceResponse * _Nonnull)response {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Do something with the response
+        });
+    }
+    @end
 }
-
-- (void)onSuccessWithResponse:(IntelligenceResponse * _Nonnull)response {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // Do something with the response
-    });
-}
-@end
 ```
 
 <br>
@@ -173,49 +219,60 @@ Sign3 *listener = [[Sign3 alloc] init];
 
 ```response
 {
-    "sessionId": "f91b7d20-5e33-4f87-b1e0-145c6b0c8d42",
-    "deviceId": "cf679f71-6358-4bf8-9b37-65e22e912053",
-    "requestId": "315189c4-2767-48ed-83ec-fafc77defaad",
-    "simulator": false,
-    "jailbroken": false,
+    "deviceRiskScore": 49.83302,
+    "geoSpoofed": true,
     "vpn": false,
-    "geoSpoofed": false,
-    "appTampering": true,
     "hooking": true,
+    "appAnalytics": {
+        "affinity": {
+            "entertainment": 0.5
+        }
+    },
+    "simulator": true,
     "proxy": false,
-    "mirroredScreen": false,
-    "gpsLocation": {
-        "latitude": 28.5128729642046,
-        "longitude": 77.08840542816685,
-        "altitude": 237.2448616027832
-    },
-    "cloned": true,
-    "additionalData": {},
-    "clientUserIds": [
-        "difansd23r32",
-        "2390ksdfaksd"
-    ],
-    "sign3UserIds": [
-        "13asefnn324"
-    ],
-    "newDevice": false,
-    "ip": "106.219.161.71",
-    "ipDetails": {
-        "country": "IN",
-        "fraudScore": 27.0,
-        "city": "New Delhi",
-        "isp": null,
-        "latitude": 28.60000038,
-        "region": "National Capital Territory of Delhi",
-        "asn": "",
-        "longitude": 77.19999695
-    },
+    "newDevice": true,
     "factoryReset": false,
-    "factoryResetTime": 1745067328
-    "deviceRiskScore": 99.50516,
-    "sessionRiskScore": 99.50516,
+    "sessionRiskScore": 63.636364,
+    "clientUserIds": [],
+    "ip": "106.194.108.233",
+    "jailbroken": false,
+    "requestId": "1b1459a5-bc57-45c7-8a24-4a8fbde6777d",
+    "gpsLocation": {
+        "altitude": 0,
+        "longitude": 72.8561644,
+        "latitude": 19.0176147
+    },
+    "deviceId": "872dcb31-7a38-426d-8a66-88bb70024a80",
+    "ipDetails": {
+        "isp": "Patna (Police Colony)",
+        "asn": "45609",
+        "fraudScore": 0,
+        "city": "Patna (Police Colony)",
+        "region": "Patna (Police Colony)",
+        "longitude": 85.0818,
+        "country": "Patna (Police Colony)",
+        "latitude": 25.5819
+    },
+    "sessionId": "02430cb5-84b9-4750-b48e-08a2dcf0814d",
+    "cloned": true,
+    "sign3UserIds": [],
+    "deviceMeta": {
+        "cpuType": "ARM64 CPU",
+        "product": "iPhone 7"
+        "iOSVersion": "18.2",
+        "totalRAM": "9.42 GB",
+        "brand": "Apple",
+        "model": "iPhone",
+        "storageAvailable": "62949584896",
+        "screenResolution": "1320x2868",
+        "storageTotal": "494384795648"
+    },
+    "factoryResetTime": 1746337162,
+    "appTampering": true,
+    "mirroredScreen": false
 }
 ```
+
 ### Error Response
 
 ```error
@@ -253,6 +310,9 @@ The intelligence response includes the following keys:
 - **sign3UserIds**: This will contain Sign3 generated userIds list till now the device has seen. Note: The logic for generating userId will be configured as per your business logic and can be customized.
 - **deviceRiskScore**: The risk score of the device. Note: sessionRiskScore is derived from the latest state of the device but deviceRiskScore also factors in the historical state of the device (whether a device was rooted in any of the past sessions).
 - **additionalData**: Reserved for any extra or custom data not present in the IntelligenceResponse, providing a customized response based on specific requirements.
-
+- **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
+- **appAnalytics**: An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device.
 <br>
+
+
 
