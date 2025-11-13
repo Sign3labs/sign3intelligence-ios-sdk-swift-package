@@ -255,7 +255,6 @@ if #available(iOS 15.0, *) {
     },
     "sessionId": "02430cb5-84b9-4750-b48e-08a2dcf0814d",
     "cloned": true,
-    "sign3UserIds": [],
     "deviceMeta": {
         "cpuType": "ARM64 CPU",
         "product": "iPhone 7"
@@ -307,7 +306,6 @@ The intelligence response includes the following keys:
 - **gpsLocation**: Details of the device's current GPS location, including latitude, longitude, and address information.
 - **ip**: The current IP address of the device.
 - **ipDetails**: Object added to capture ip related information and fraudScore related to ip address.
-- **sign3UserIds**: This will contain Sign3 generated userIds list till now the device has seen. Note: The logic for generating userId will be configured as per your business logic and can be customized.
 - **deviceRiskScore**: The risk score of the device. Note: sessionRiskScore is derived from the latest state of the device but deviceRiskScore also factors in the historical state of the device (whether a device was rooted in any of the past sessions).
 - **additionalData**: Reserved for any extra or custom data not present in the IntelligenceResponse, providing a customized response based on specific requirements.
 - **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
