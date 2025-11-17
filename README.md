@@ -16,17 +16,21 @@ The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device
 
 ## Installation
 
-#### Using CocoaPods
+#### Option A - Using CocoaPods
+ - To integrate Sign3Intelligence into your Xcode project using CocoaPods, specify it in your Podfile
+ - Checkout the [latest_version](https://github.com/ashishgupta6/sign3intelligence-ios-sdk-swift-package/tree/main?tab=readme-ov-file#changelog)
 
-1. To integrate Sign3Intelligence into your Xcode project using CocoaPods, specify it in your Podfile
-2. Checkout the [latest_version](https://github.com/ashishgupta6/sign3intelligence-ios-sdk-swift-package/tree/main?tab=readme-ov-file#changelog)
-```
-pod 'Sign3Intelligence', '~> <latest_version>'
-```
+   ```
+    pod 'Sign3Intelligence', '~> <latest_version>'
+    ```
 
-#### Using Swift package manager
+#### Option B - Using Swift package manager
+ - URL for the repository: https://github.com/ashishgupta6/sign3intelligence-ios-sdk-swift-package
 
-URL for the repository: https://github.com/ashishgupta6/sign3intelligence-ios-sdk-swift-package
+#### Option C - Using XCFramework (Manual Integration)
+ - Download the latest `Sign3Intelligence.xcframework` from the release page or from your provided SDK package.
+ - Drag and drop `Sign3Intelligence.xcframework` into your Xcode project’s `General` tab under `Frameworks, Libraries, and Embedded Content` section and set it to `Embed & Sign`.
+ - Ensure your project’s Build Settings → Framework Search Paths includes the folder containing the XCFramework (if needed), then clean and rebuild your project.
 
 <br>
 
