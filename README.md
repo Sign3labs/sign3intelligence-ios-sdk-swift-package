@@ -1,6 +1,6 @@
-# Sign3 SDK Integration Guide for iOS
+# IdentityFraud SDK Integration Guide for iOS
 
-The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as jailbroken devices, app tampering, VPN connections, or screen mirroring and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system. 
+The IdentityFraud SDK is an iOS-based fraud prevention toolkit designed to assess device security, detecting potential risks such as jailbroken devices, app tampering, VPN connections, or screen mirroring and much more. Providing insights into the device's safety, it enhances security measures against fraudulent activities and ensures a robust protection system. 
 
 <br>
 
@@ -16,17 +16,10 @@ The Sign3 SDK is an iOS-based fraud prevention toolkit designed to assess device
 
 ## Installation
 
-#### Using CocoaPods
-
-1. To integrate Sign3Intelligence into your Xcode project using CocoaPods, specify it in your Podfile
-2. Checkout the [latest_version](https://github.com/ashishgupta6/sign3intelligence-ios-sdk-swift-package/tree/main?tab=readme-ov-file#changelog)
-```
-pod 'Sign3Intelligence', '~> <latest_version>'
-```
-
-#### Using Swift package manager
-
-URL for the repository: https://github.com/ashishgupta6/sign3intelligence-ios-sdk-swift-package
+#### Using XCFramework
+ - Download the latest `IdentityFraud.xcframework` from the release page or from your provided SDK package.
+ - Drag and drop `IdentityFraud.xcframework` into your Xcode project’s `General` tab under `Frameworks, Libraries, and Embedded Content` section and set it to `Embed & Sign`.
+ - Ensure your project’s Build Settings → Framework Search Paths includes the folder containing the `IdentityFraud.xcframework` (if needed), then clean and rebuild your project.
 
 <br>
 
@@ -36,12 +29,12 @@ The SDK can be imported like any other library:
 
 ### For Swift
 ``` swift
-import Sign3Intelligence
+import IdentityFraud
 ```
 
 ### For Objective-C
 ``` objective-c
-#import "Sign3Intelligence/Sign3Intelligence-Swift.h"
+#import "IdentityFraud/IdentityFraud-Swift.h"
 ```
 
 <br>
@@ -55,12 +48,12 @@ import Sign3Intelligence
 ``` swift
 if #available(iOS 15.0, *) {
     let options = Options.Builder()
-        .setClientId("<SIGN3_CLIENT_ID>")
-        .setClientSecret("<SIGN3_CLIENT_SECRET>")
+        .setClientId("<CLIENT_ID>")
+        .setClientSecret("<CLIENT_SECRET>")
         .setEnvironment(Environment.PROD) // For Prod: Environment.PROD, For Dev: Environment.DEV
         .build()
 
-    Sign3SDK.getInstance().initAsync(options: options){isInitialize in
+    IdentitySDK.getInstance().initAsync(options: options){isInitialize in
         // To check if the SDK is initialized correctly or not
     }
 }
@@ -70,12 +63,12 @@ if #available(iOS 15.0, *) {
 ``` objective-c
 if #available(iOS 15.0, *) {
     OptionBuilder *builder = [[OptionBuilder alloc] init];
-    builder = [builder setClientId:@"<SIGN3_CLIENT_ID>"];
-    builder = [builder setClientSecret:@"<SIGN3_CLIENT_SECRET>"];
+    builder = [builder setClientId:@"<CLIENT_ID>"];
+    builder = [builder setClientSecret:@"<CLIENT_SECRET>"];
     builder = [builder setEnvironment:EnvironmentPROD];
     Options *options = [builder build];
 
-    [[Sign3SDK getInstance] initAsyncWithOptions:options completion:^(
+    [[IdentitySDK getInstance] initAsyncWithOptions:options completion:^(
         BOOL isInitialize
     ) {
         // Handle initialization result
@@ -87,15 +80,15 @@ if #available(iOS 15.0, *) {
 <br>
 
 ## Optional Parameters
-1.    You can add optional parameters like UserId, Phone Number, etc., at any time and update the instance of Sign3Intelligence.
+1. You can add optional parameters like UserId, Phone Number, etc., at any time and update the instance of IdentityFraud.
 3. Once the options are updated, they get reset. Clients need to explicitly update the options again to ingest them, or else the default value of OTHERS in userEventType will be sent to the backend.
 4. You need to call **getIntelligence()** function whenever you update the options.
-5. To update the Sign3Intelligence instance with optional parameters, including additional attributes, you can use the following examples.
+5. To update the IdentityFraud instance with optional parameters, including additional attributes, you can use the following examples.
 
 ### For Swift
 ``` swift
 if #available(iOS 15.0, *) {
-    Sign3SDK.getInstance().updateOptions(updateOption:  UpdateOption.Builder()
+    IdentitySDK.getInstance().updateOptions(updateOption:  UpdateOption.Builder()
         .setPhoneNumber("1234567890")
         .setUserId("12345")
         .setPhoneInputType(PhoneInputType.GOOGLE_HINT)
@@ -130,7 +123,7 @@ if #available(iOS 15.0, *) {
     };
     builder = [builder setAdditionalAttributes:additionalAttributes];
     UpdateOption *updateOption = [builder build];
-    [[Sign3SDK getInstance] updateOptionsWithUpdateOption:updateOption];
+    [[IdentitySDK getInstance] updateOptionsWithUpdateOption:updateOption];
 }
 ```
 
@@ -145,7 +138,7 @@ if #available(iOS 15.0, *) {
 
  ```swift
 if #available(iOS 15.0, *) {
-    let sessionId = Sign3SDK.getInstance().getSessionId()
+    let sessionId = IdentitySDK.getInstance().getSessionId()
 }
 ```
 
@@ -153,7 +146,7 @@ if #available(iOS 15.0, *) {
 
  ```objective-c
 if #available(iOS 15.0, *) {
-    NSString *sessionId = [[Sign3SDK getInstance] getSessionId];
+    NSString *sessionId = [[IdentitySDK getInstance] getSessionId];
 }
 ```
 
@@ -162,15 +155,15 @@ if #available(iOS 15.0, *) {
 ## Fetch Device Intelligence Result
 
 1. To fetch the device intelligence data refer to the following code snippet.
-2. Create a class that inherits from IntelligenceResponseListener and override the onSuccess and onError methods. Create an instance of the Sign3 class. Pass the instance to the getIntelligence method.
+2. Create a class that inherits from IntelligenceResponseListener and override the onSuccess and onError methods. Create an instance of the IdentityFraud class. Pass the instance to the getIntelligence method.
 3. IntelligenceResponse and IntelligenceError models are exposed by the SDK.
 
  ### For Swift
 ``` swift
 if #available(iOS 15.0, *) {
-    Sign3SDK.getInstance().getIntelligence(listener: Sign3())
+    IdentitySDK.getInstance().getIntelligence(listener: IdentityFraud())
     
-    class Sign3: IntelligenceResponseListener{
+    class IdentityFraud: IntelligenceResponseListener{
         
         func onSuccess(response: IntelligenceResponse) {
             if let jsonString = response.toJson() {
@@ -190,13 +183,13 @@ if #available(iOS 15.0, *) {
  ### For Objective-C
 ``` objective-c
 if #available(iOS 15.0, *) {
-    Sign3 *listener = [[Sign3 alloc] init];
-    [[Sign3SDK getInstance] getIntelligenceWithListener:self.listener];
+    IdentityFraud *listener = [[IdentityFraud alloc] init];
+    [[IdentitySDK getInstance] getIntelligenceWithListener:self.listener];
     
-    @interface Sign3 : NSObject <IntelligenceResponseListener>
+    @interface IdentityFraud : NSObject <IntelligenceResponseListener>
     @end
     
-    @implementation Sign3
+    @implementation IdentityFraud
     
     - (void)onErrorWithError:(IntelligenceError * _Nonnull)error {
         // Something went wrong, handle the error message
@@ -277,7 +270,7 @@ if #available(iOS 15.0, *) {
 ```error
 {
   "requestId": "53D0BD3F-9D30-472E-91E1-27F8D6962404",
-  "errorMessage": "Sign3 Server Error"
+  "errorMessage": "IdentityFraud Server Error"
 }
 ```
 
