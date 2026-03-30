@@ -265,6 +265,12 @@ if #available(iOS 15.0, *) {
         "storageAvailable": "62949584896",
         "screenResolution": "1320x2868",
         "storageTotal": "494384795648"
+    }
+    "ruleAction": {
+        "action": "WARN",
+        "name": "VPN enabled",
+        "description": "A VPN connection was detected on this device.",
+        "message": "For security reasons, please disable your VPN and try again."
     },
     "factoryResetTime": 1746337162,
     "appTampering": true,
@@ -310,6 +316,7 @@ The intelligence response includes the following keys:
 - **additionalData**: Reserved for any extra or custom data not present in the IntelligenceResponse, providing a customized response based on specific requirements.
 - **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
 - **appAnalytics**: An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device.
+- **ruleAction**: Returns the triggered rule details along with the recommended action (e.g., allow, warn, block), enabling the app to take immediate action based on the specific rule that was fired.
 <br>
 
 
