@@ -219,62 +219,70 @@ if #available(iOS 15.0, *) {
 
 ```response
 {
-    "deviceRiskScore": 49.83302,
-    "geoSpoofed": true,
-    "vpn": false,
-    "hooking": true,
-    "appAnalytics": {
-        "affinity": {
-            "entertainment": 0.5
-        }
-    },
-    "simulator": true,
-    "proxy": false,
-    "newDevice": true,
-    "factoryReset": false,
-    "sessionRiskScore": 63.636364,
-    "clientUserIds": [],
-    "ip": "106.194.108.233",
-    "jailbroken": false,
-    "requestId": "1b1459a5-bc57-45c7-8a24-4a8fbde6777d",
-    "gpsLocation": {
-        "altitude": 0,
-        "longitude": 72.8561644,
-        "latitude": 19.0176147
-    },
-    "deviceId": "872dcb31-7a38-426d-8a66-88bb70024a80",
-    "ipDetails": {
-        "isp": "Patna (Police Colony)",
-        "asn": "45609",
-        "fraudScore": 0,
-        "city": "Patna (Police Colony)",
-        "region": "Patna (Police Colony)",
-        "longitude": 85.0818,
-        "country": "Patna (Police Colony)",
-        "latitude": 25.5819
-    },
-    "sessionId": "02430cb5-84b9-4750-b48e-08a2dcf0814d",
-    "cloned": true,
-    "deviceMeta": {
-        "cpuType": "ARM64 CPU",
-        "product": "iPhone 7"
-        "iOSVersion": "18.2",
-        "totalRAM": "9.42 GB",
-        "brand": "Apple",
-        "model": "iPhone",
-        "storageAvailable": "62949584896",
-        "screenResolution": "1320x2868",
-        "storageTotal": "494384795648"
+  "deviceRiskScore": 49.83302,
+  "geoSpoofed": true,
+  "vpn": false,
+  "hooking": true,
+  "appAnalytics": {
+    "affinity": {
+      "entertainment": 0.5
     }
-    "ruleAction": {
-        "action": "WARN",
-        "name": "VPN enabled",
-        "description": "A VPN connection was detected on this device.",
-        "message": "For security reasons, please disable your VPN and try again."
-    },
-    "factoryResetTime": 1746337162,
-    "appTampering": true,
-    "mirroredScreen": false
+  },
+  "simulator": true,
+  "proxy": false,
+  "newDevice": true,
+  "factoryReset": false,
+  "sessionRiskScore": 63.636364,
+  "clientUserIds": [],
+  "ip": "106.194.108.233",
+  "jailbroken": false,
+  "requestId": "1b1459a5-bc57-45c7-8a24-4a8fbde6777d",
+  "gpsLocation": {
+    "longitude": 72.8561644,
+    "latitude": 19.0176147,
+    "altitude": 87.0239993,
+    "featureName": "B1, Road Number 19",
+    "countryCode": "IN",
+    "postalCode": "400031",
+    "address": "B1, Road Number 19, Mumbai, Maharashtra, 400031, India",
+    "countryName": "India",
+    "locality": "Mumbai",
+    "subLocality": "Wadala West",
+    "subAdminArea": "Mumbai",
+    "adminArea": "Maharashtra"
+  },
+  "deviceId": "872dcb31-7a38-426d-8a66-88bb70024a80",
+  "ipDetails": {
+    "isp": "Patna (Police Colony)",
+    "asn": "45609",
+    "fraudScore": 0,
+    "city": "Patna (Police Colony)",
+    "region": "Patna (Police Colony)",
+    "longitude": 85.0818,
+    "country": "Patna (Police Colony)",
+    "latitude": 25.5819
+  },
+  "sessionId": "02430cb5-84b9-4750-b48e-08a2dcf0814d",
+  "cloned": true,
+  "deviceMeta": {
+    "cpuType": "ARM64 CPU",
+    "product": "iPhone 7""iOSVersion": "18.2",
+    "totalRAM": "9.42 GB",
+    "brand": "Apple",
+    "model": "iPhone",
+    "storageAvailable": "62949584896",
+    "screenResolution": "1320x2868",
+    "storageTotal": "494384795648"
+  },
+  "ruleAction": {
+    "action": "WARN",
+    "name": "VPN enabled",
+    "description": "A VPN connection was detected on this device.",
+    "message": "For security reasons, please disable your VPN and try again."
+  },
+  "factoryResetTime": 1746337162,
+  "appTampering": true,
+  "mirroredScreen": false
 }
 ```
 
