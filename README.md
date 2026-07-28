@@ -54,7 +54,7 @@ import Sign3Intelligence
 ### For Swift
 ``` swift
 if #available(iOS 15.0, *) {
-    let options = Options.Builder()
+    let options = Options.OptionBuilder()
         .setClientId("<SIGN3_CLIENT_ID>")
         .setClientSecret("<SIGN3_CLIENT_SECRET>")
         .setEnvironment(Environment.PROD) // For Prod: Environment.PROD, For Dev: Environment.DEV
