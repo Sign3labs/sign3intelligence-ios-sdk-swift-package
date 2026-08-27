@@ -159,6 +159,102 @@ if #available(iOS 15.0, *) {
 
 <br>
 
+## Behavioural Biometrics
+
+The Behavioural biometrics feature in the SDK captures and analyzes how users interact with your app
+to build a detailed behavioural profile. It monitors device sensor data, including accelerometer,
+gyroscope, and other sensors, as well as touch interactions such as taps, scrolls, long presses, and
+additional signals. By examining these patterns, the SDK can detect unusual activity and potential
+fraud, helping you enhance security and gain deeper insights into user behavior.
+
+### StartAnalyzingBehaviour
+
+- Use this method to start capturing the user’s behavioral data.
+- Call it at the point in your app where you want to track interactions, such as on a specific screen
+  or during flows like login, signup, or payment.
+- The function returns a capture ID for detailed insights tracking.
+
+### For Swift
+
+```swift
+Sign3SDK.getInstance().startAnalyzingBehaviour()
+```
+
+### For Objective-C
+
+```objc
+[[Sign3SDK getInstance] startAnalyzingBehaviour];
+```
+
+### StopAnalyzingBehaviour
+
+- Use the function below to safely halt behavioural data collection.
+- Manually stop tracking at the appropriate point, such as after a user completes login, signup, or
+  payment.
+- The SDK continues collecting data until you explicitly stop it.
+- Data collection will automatically stop if the app is killed, but it is recommended to stop it
+  manually.
+
+### For Swift
+
+```swift
+Sign3SDK.getInstance().stopAnalyzingBehaviour()
+```
+
+### For Objective-C
+
+```objc
+[[Sign3SDK getInstance] stopAnalyzingBehaviour];
+```
+
+### Set Capture Context
+
+- Use this method to label a behavioural capture with a name and, optionally, your own custom
+  attributes, so the session can be identified in insights and reports.
+- The capture context accepts two types of fields:
+    - `name` — a short label for the flow or screen being captured (e.g. `login`, `add_card`,
+      `payment`). This field is required.
+    - `attributes` — an optional `[String: String]` of your own key–value pairs carrying extra detail
+      about the capture.
+- Call it before `startAnalyzingBehaviour()` to label the capture from the very beginning.
+- You can also set multiple contexts between `startAnalyzingBehaviour()` and
+  `stopAnalyzingBehaviour()`, and the capture context is not carried over to the next capture — call
+  `setCaptureContext()` again for every capture you want labelled.
+
+### For Swift
+
+```swift
+Sign3SDK.getInstance().setCaptureContext(name: "login", attributes: nil)
+```
+
+```swift
+Sign3SDK.getInstance().setCaptureContext(
+    name: "add_card",
+    attributes: [
+        "card_type": "credit",
+        "entry_mode": "manual",
+        "attempt_number": "2"
+    ]
+)
+```
+
+### For Objective-C
+
+```objc
+[[Sign3SDK getInstance] setCaptureContextWithName:@"login" attributes:nil];
+```
+
+```objc
+[[Sign3SDK getInstance] setCaptureContextWithName:@"add_card"
+                                       attributes:@{
+    @"card_type": @"credit",
+    @"entry_mode": @"manual",
+    @"attempt_number": @"2"
+}];
+```
+
+<br>
+
 ## Fetch Device Intelligence Result
 
 1. To fetch the device intelligence data refer to the following code snippet.
