@@ -160,16 +160,14 @@ if #available(iOS 15.0, *) {
 <br>
 
 ## Behavioural Biometrics
-
-The Behavioural biometrics feature in the SDK captures and analyzes how users interact with your app
-to build a detailed behavioural profile. It monitors device sensor data, including accelerometer,
-gyroscope, and other sensors, as well as touch interactions such as taps, scrolls, long presses, and
-additional signals. By examining these patterns, the SDK can detect unusual activity and potential
-fraud, helping you enhance security and gain deeper insights into user behavior.
+The Behavioural biometrics feature measures how a user interacts with your app and returns behavioural insights you
+can act on — drift between the same user's sessions, differences across distinct users, typing rhythm, typing
+consistency and similar indicators. These insights help you tell a genuine returning user apart from someone else
+operating the account, surfacing account takeover, automation and other suspicious activity.
 
 ### StartAnalyzingBehaviour
 
-- Use this method to start capturing the user’s behavioral data.
+- Use this method to start capturing the user’s behavioural data.
 - Call it at the point in your app where you want to track interactions, such as on a specific screen
   or during flows like login, signup, or payment.
 - The function returns a capture ID for detailed insights tracking.
