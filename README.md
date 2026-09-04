@@ -313,70 +313,93 @@ if #available(iOS 15.0, *) {
 
 ```response
 {
-  "deviceRiskScore": 49.83302,
-  "geoSpoofed": true,
-  "vpn": false,
-  "hooking": true,
-  "appAnalytics": {
-    "affinity": {
-      "entertainment": 0.5
-    }
-  },
-  "simulator": true,
-  "proxy": false,
-  "newDevice": true,
-  "factoryReset": false,
-  "sessionRiskScore": 63.636364,
-  "clientUserIds": [],
-  "ip": "106.194.108.233",
-  "jailbroken": false,
-  "requestId": "1b1459a5-bc57-45c7-8a24-4a8fbde6777d",
-  "gpsLocation": {
-    "longitude": 72.8561644,
-    "latitude": 19.0176147,
-    "altitude": 87.0239993,
-    "featureName": "B1, Road Number 19",
-    "countryCode": "IN",
-    "postalCode": "400031",
-    "address": "B1, Road Number 19, Mumbai, Maharashtra, 400031, India",
-    "countryName": "India",
-    "locality": "Mumbai",
-    "subLocality": "Wadala West",
-    "subAdminArea": "Mumbai",
-    "adminArea": "Maharashtra"
-  },
-  "deviceId": "872dcb31-7a38-426d-8a66-88bb70024a80",
-  "ipDetails": {
-    "isp": "Patna (Police Colony)",
-    "asn": "45609",
-    "fraudScore": 0,
-    "city": "Patna (Police Colony)",
-    "region": "Patna (Police Colony)",
-    "longitude": 85.0818,
-    "country": "Patna (Police Colony)",
-    "latitude": 25.5819
-  },
-  "sessionId": "02430cb5-84b9-4750-b48e-08a2dcf0814d",
-  "cloned": true,
-  "deviceMeta": {
-    "cpuType": "ARM64 CPU",
-    "product": "iPhone 7""iOSVersion": "18.2",
-    "totalRAM": "9.42 GB",
-    "brand": "Apple",
-    "model": "iPhone",
-    "storageAvailable": "62949584896",
-    "screenResolution": "1320x2868",
-    "storageTotal": "494384795648"
-  },
-  "ruleAction": {
-    "action": "WARN",
-    "name": "VPN enabled",
-    "description": "A VPN connection was detected on this device.",
-    "message": "For security reasons, please disable your VPN and try again."
-  },
-  "factoryResetTime": 1746337162,
-  "appTampering": true,
-  "mirroredScreen": false
+    "deviceRiskScore": 49.83302,
+    "geoSpoofed": true,
+    "vpn": false,
+    "hooking": true,
+    "appAnalytics": {
+        "affinity": {
+            "entertainment": 0.5
+        }
+    },
+    "simulator": true,
+    "proxy": false,
+    "newDevice": true,
+    "factoryReset": false,
+    "sessionRiskScore": 63.636364,
+    "clientUserIds": [],
+    "ip": "106.194.108.233",
+    "jailbroken": false,
+    "requestId": "1b1459a5-bc57-45c7-8a24-4a8fbde6777d",
+    "gpsLocation": {
+        "longitude": 72.8561644,
+        "latitude": 19.0176147,
+        "altitude": 87.0239993,
+        "featureName": "B1, Road Number 19",
+        "countryCode": "IN",
+        "postalCode": "400031",
+        "address": "B1, Road Number 19, Mumbai, Maharashtra, 400031, India",
+        "countryName": "India",
+        "locality": "Mumbai",
+        "subLocality": "Wadala West",
+        "subAdminArea": "Mumbai",
+        "adminArea": "Maharashtra"
+    },
+    "deviceId": "872dcb31-7a38-426d-8a66-88bb70024a80",
+    "ipDetails": {
+        "isp": "Patna (Police Colony)",
+        "asn": "45609",
+        "fraudScore": 0,
+        "city": "Patna (Police Colony)",
+        "region": "Patna (Police Colony)",
+        "longitude": 85.0818,
+        "country": "Patna (Police Colony)",
+        "latitude": 25.5819
+    },
+    "sessionId": "02430cb5-84b9-4750-b48e-08a2dcf0814d",
+    "cloned": true,
+    "deviceMeta": {
+        "cpuType": "ARM64 CPU",
+        "product": "iPhone 7""iOSVersion": "18.2",
+        "totalRAM": "9.42 GB",
+        "brand": "Apple",
+        "model": "iPhone",
+        "storageAvailable": "62949584896",
+        "screenResolution": "1320x2868",
+        "storageTotal": "494384795648"
+    },
+    "ruleAction": {
+        "action": "WARN",
+        "name": "VPN enabled",
+        "description": "A VPN connection was detected on this device.",
+        "message": "For security reasons, please disable your VPN and try again."
+    },
+    "factoryResetTime": 1746337162,
+    "appTampering": true,
+    "mirroredScreen": false,
+    "riskScores": {
+        "sessionRiskScore": 61.2,
+        "deviceRiskScore": 22.0,
+        "behaviouralRiskScore": 58,
+        "automationRiskScore": 6,
+        "socialEngineeringRiskScore": 42,
+        "accountTakeoverRiskScore": 42
+    },
+    "behaviourInsights": {
+        "behaviouralAnomaly": "High",
+        "copyPasteAnomaly": "Low",
+        "pasteCount": 2,
+        "autofillCount": 1,
+        "suspiciousTouchPattern": false,
+        "suspiciousKeypressPattern": false,
+        "suspiciousFormFillout": false,
+        "suspiciousDeviceMotion": false,
+        "potentialCoachedInteraction": true
+    },
+    "riskReasonCodes": [
+        "ACTIVE_CALL_DURING_ENTRY",
+        "REMOTE_ACCESS_APP_PRESENT"
+    ]
 }
 ```
 
@@ -419,6 +442,11 @@ The intelligence response includes the following keys:
 - **deviceMeta**: Contains all device-related information such as brand, model, screen resolution, total storage, etc.  
 - **appAnalytics**: An object containing an affinity field, which holds key-value pairs where each key is a category (e.g., entertainment, tech, gaming), and the value is a floating-point number between 0 and 1 representing the user's affinity score for that category. Higher scores indicate stronger interest, and lower scores suggest less interest. These scores are based on the apps installed on the user's device.
 - **ruleAction**: Returns the triggered rule details along with the recommended action (e.g., allow, warn, block), enabling the app to take immediate action based on the specific rule that was fired.
+- **riskScores**: Key-value pairs containing the full set of risk scores computed for the session, providing a breakdown beyond the top-level sessionRiskScore and deviceRiskScore for example behaviouralRiskScore, automationRiskScore, socialEngineeringRiskScore, and accountTakeoverRiskScore. Scores may be null until computed. Defaults to an empty object.
+- **behaviourInsights**: Key-value pairs describing how the user interacted with the app during the session, covering interaction anomalies and input characteristics — for example behaviouralAnomaly, copyPasteAnomaly, pasteCount, autofillCount, suspiciousTouchPattern, suspiciousKeypressPattern, suspiciousFormFillout, suspiciousDeviceMotion, potentialCoachedInteraction. Defaults to an empty object.
+- **riskReasonCodes**: A list of machine-readable codes explaining which signals contributed to the returned risk scores (e.g., ACTIVE_CALL_DURING_ENTRY, REMOTE_ACCESS_APP_PRESENT). Useful for surfacing the reasoning behind a score rather than the score alone. New codes may be added over time, so unrecognised values should be handled gracefully. Defaults to an empty list.
+
+
 <br>
 
 
