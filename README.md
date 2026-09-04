@@ -377,6 +377,11 @@ if #available(iOS 15.0, *) {
     "factoryResetTime": 1746337162,
     "appTampering": true,
     "mirroredScreen": false,
+    "harmfulAppDetected": false,
+    "unsecuredWifi": false,
+    "blacklistedDevice": false,
+    "remoteAppProviders": false,
+    "remoteAppProvidersCount": -1
     "riskScores": {
         "sessionRiskScore": 61.2,
         "deviceRiskScore": 22.0,
@@ -445,8 +450,11 @@ The intelligence response includes the following keys:
 - **riskScores**: Key-value pairs containing the full set of risk scores computed for the session, providing a breakdown beyond the top-level sessionRiskScore and deviceRiskScore for example behaviouralRiskScore, automationRiskScore, socialEngineeringRiskScore, and accountTakeoverRiskScore. Scores may be null until computed. Defaults to an empty object.
 - **behaviourInsights**: Key-value pairs describing how the user interacted with the app during the session, covering interaction anomalies and input characteristics — for example behaviouralAnomaly, copyPasteAnomaly, pasteCount, autofillCount, suspiciousTouchPattern, suspiciousKeypressPattern, suspiciousFormFillout, suspiciousDeviceMotion, potentialCoachedInteraction. Defaults to an empty object.
 - **riskReasonCodes**: A list of machine-readable codes explaining which signals contributed to the returned risk scores (e.g., ACTIVE_CALL_DURING_ENTRY, REMOTE_ACCESS_APP_PRESENT). Useful for surfacing the reasoning behind a score rather than the score alone. New codes may be added over time, so unrecognised values should be handled gracefully. Defaults to an empty list.
-
-
+- **blacklistedDevice**: Indicates whether the device is identified as blacklisted based on internal risk evaluation.
+- **harmfulAppDetected**: Indicates whether potentially harmful or risky applications are detected on the device.
+- **unsecuredWifi**: Indicates whether the device is connected to an unsecured or potentially risky Wi-Fi network.
+- **remoteAppProviders**: Indicates whether any remote applications are installed on the device.
+- **remoteAppProvidersCount**: The number of remote application providers detected on the device.
 <br>
 
 
